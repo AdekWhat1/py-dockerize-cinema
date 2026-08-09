@@ -1,7 +1,7 @@
 FROM python:3.11.6-alpine3.18
 LABEL maintainer="mr.denisyakubenko@gmail.com"
 
-ENV PYTHOUNNBUFFERED=1
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
@@ -26,4 +26,4 @@ USER my_user
 CMD [
 "sh",
 "-c",
-"python manage.py wait_for_db && python migrate && python manage.py runserver 0.0.0.0:8000"]
+"python manage.py wait_for_db && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
