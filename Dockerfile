@@ -1,7 +1,7 @@
 FROM python:3.11.6-alpine3.18
 LABEL maintainer="mr.denisyakubenko@gmail.com"
 
-ENV PYTHOUNNBUFFERED 1
+ENV PYTHOUNNBUFFERED=1
 
 WORKDIR /app
 
@@ -16,9 +16,14 @@ RUN adduser \
     my_user
 
 RUN mkdir -p /files/media
-
 RUN chown -R my_user /files/media
 RUN chmod -R 755 /files/media
 
+VOLUME ["/files/media"]
 
 USER my_user
+
+CMD [
+"sh",
+"-c",
+"python manage.py wait_for_db && python migrate && python manage.py runserver 0.0.0.0:8000"]

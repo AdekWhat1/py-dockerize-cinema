@@ -1,4 +1,16 @@
 .venv
+.git
+.gitignore
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+media
+staticfiles
+.env
+.flake8
+docker-compose.yml
 Dockerfile
 .idea
-docker-compose.yml
+
